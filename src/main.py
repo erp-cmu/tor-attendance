@@ -1,7 +1,8 @@
 from typing import Annotated
-
-from fastapi import FastAPI, Request, Form, File, UploadFile
+from fastapi import FastAPI, Request, Form, UploadFile
 from fastapi.templating import Jinja2Templates
+from attendance import cal_attendance
+from fastapi.responses import FileResponse
 
 templates = Jinja2Templates(directory="src/templates")
 
@@ -27,4 +28,8 @@ def homepage_post(name: Annotated[str, Form()], request: Request):
 
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
-    return {"filename": file.filename}
+    try:
+        cal_attendance(file)
+        return FileResponse("./src/temp/out.xlsx")
+    except:
+        return {"error": "error"}

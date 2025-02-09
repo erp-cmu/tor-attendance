@@ -11,10 +11,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>My App</h1>
-      <p>{{name}}</p>
-      <form method="POST" action="/">
-        <input name="name" />
+      <h1>Attendance Analyzer: Tor Drink</h1>
+      <form method="POST" action="/uploadfile" enctype="multipart/form-data">
+        <label for="file">Upload Attendance File</label>
+        <input type="file" name="file" id="file" />
         <button type="submit">Submit</button>
       </form>
     </div>
