@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import FastAPI, Request, Form, UploadFile
 from fastapi.templating import Jinja2Templates
-from attendance import cal_attendance
+from .attendance import cal_attendance
 from fastapi.responses import FileResponse
 
 templates = Jinja2Templates(directory="src/templates")
